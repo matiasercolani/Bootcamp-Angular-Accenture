@@ -14,6 +14,9 @@ import { HeaderPlayerComponent } from './components/header-player/header-player.
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    SideBarComponent
   ]
 })
 export class SharedModule { }
