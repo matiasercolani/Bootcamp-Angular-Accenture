@@ -3,7 +3,7 @@
             "_id": 1,
             "name": "Getting Over",
             "album": "One Love",
-            "cover": "https://jenesaispop.com/wp-content/uploads/2009/09/guetta_onelove.jpg",
+            "cover": "https://jjenesaispop.com/wp-content/uploads/2009/09/guetta_onelove.jpg",
             "artist": {
                 "name": "David Guetta",
                 "nickname": "David Guetta",
@@ -66,11 +66,11 @@
         {
             "_id": 5,
             "name": "BEBE (Official Video)",
-            "album": "Giolì & Assia",
+            "album": "Giolï¿½ & Assia",
             "cover": "https://i.scdn.co/image/ab67616d0000b27345ca41b0d2352242c7c9d4bc",
             "artist": {
-                "name": "Giolì & Assia",
-                "nickname": "Giolì & Assia",
+                "name": "Giolï¿½ & Assia",
+                "nickname": "Giolï¿½ & Assia",
                 "nationality": "IT"
             },
             "duration": {
@@ -113,7 +113,7 @@
         },
         {
             "_id": 8,
-            "name": "Bésame??",
+            "name": "Bï¿½same??",
             "album": "Valentino Ft MTZ Manuel Turizo (Video Oficial)",
             "cover": "https://i1.sndcdn.com/artworks-000247627460-1hqnjr-t500x500.jpg",
             "artist": {
