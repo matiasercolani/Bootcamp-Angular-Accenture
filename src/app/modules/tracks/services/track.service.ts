@@ -3,7 +3,7 @@ import { TrackModel } from '@core/models/tracks.model';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, mergeMap, tap, catchError } from 'rxjs/operators';
-import { environment } from 'src/enviroments/enviroment.prod';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'

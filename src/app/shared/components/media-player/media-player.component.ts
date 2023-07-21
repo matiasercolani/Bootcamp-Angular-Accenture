@@ -10,34 +10,34 @@ import { Subscription } from 'rxjs'; //TODO: Programacion reactiva!
 })
 export class MediaPlayerComponent implements OnInit, OnDestroy {
 
+  @ViewChild('progressBar') progressBar: ElementRef = new ElementRef('')
   listObservers$: Array<Subscription> = []
+  state:string = 'paused';
 
   constructor(public multimediaService: MultimediaService) { }
 
   ngOnInit(): void {
-    const observable1$=this.multimediaService.myObservable1$;
 
-      const observer1$: Subscription = this.multimediaService.callback.subscribe(
-        (responseOk)=> {
-          console.log('Llega el agua!', responseOk);
-        },
-        (responseFail) => {
-          console.log('Se tapo la tuberia', responseFail);
-        }
-      )
-
-
-    // const observer1$: Subscription = this.multimediaService.callback.subscribe(
-    //   (response: TrackModel)=> {
-    //     console.log('Recibiendo cancion...', response);
-    //   }
-    // )
-    // this.listObservers$ = [observer1$]
+    const observer1$ = this.multimediaService.playerStatus$
+      .subscribe(status=> this.state = status)
+    this.listObservers$ = [observer1$]
   }
 
   ngOnDestroy(): void {
     this.listObservers$.forEach(u => u.unsubscribe())
     console.log('BOOOM!')
+  }
+
+
+  handlePosition(event: MouseEvent): void {
+    const elNative: HTMLElement = this.progressBar.nativeElement
+    const { clientX } = event
+    const { x, width } = elNative.getBoundingClientRect()
+    const clickX = clientX - x //TODO: 1050 - x
+    const percentageFromX = (clickX * 100) / width
+    console.log(`Click(x): ${percentageFromX}`);
+    this.multimediaService.seekAudio(percentageFromX)
+
   }
 
   mockCover: TrackModel = {
