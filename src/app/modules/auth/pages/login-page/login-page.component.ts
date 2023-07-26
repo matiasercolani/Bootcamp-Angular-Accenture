@@ -34,17 +34,24 @@ export class LoginPageComponent implements OnInit {
   }
 
   sendLogin():void{
-    const {email, password}= this.formLogin.value
-    this.authService.sendCredentials(email, password)
-    .subscribe(resposeOK=>{
-      console.log('Session iniciada correcta');
-      const{tokenSession, data} = resposeOK;
-      this.cookie.set('token', tokenSession, 4, '/');
-      this.router.navigate(['/','tracks'])
+    const {email, password}= this.formLogin.value // Toma los datos del form
+    console.log('email: ',email,' pass: ',password)
+    this.authService.sendCredentials(email, password)// Envia los datos a sendCredentials
+    .subscribe(resposeOK=>{ //ER94
+      console.log('resposeOK: ',resposeOK);
+      if(resposeOK.tokenSession){
+        console.log('Session iniciada correcta');
+        const{tokenSession, data} = resposeOK;
+        this.cookie.set('token', tokenSession, 4, '/');
+        this.router.navigate(['/','tracks'])
+      }if(resposeOK.statusCode == 400){
+        this.errorSession = true;
+        console.log('Ocurrio error con tu email o password');
+      }
     },
     err=>{
       this.errorSession = true;
-      console.log('Ocurrio error con tu email o password');
+      console.log('No hay repuesta de la api');
     })
   }
 }

@@ -16,7 +16,8 @@ export class AuthService {
       email,
       password
     }
-    return this.http.post(`${this.URL}/auth/login`, body)
+    // console.log('sendCredentials environment.api: ', environment.api, body);
+    return this.http.post(`${this.URL}/api/1.0/auth/login`, body)//ER94
   }
 
   suma(a: number, b: number): number {

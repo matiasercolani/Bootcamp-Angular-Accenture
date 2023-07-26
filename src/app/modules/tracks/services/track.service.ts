@@ -21,7 +21,7 @@ export class TrackService {
    */
 
   getAllTracks$():Observable<any>{
-    return this.http.get(`${this.URL}/tracks`)
+    return this.http.get(`${this.URL}/api/1.0/tracks`) //ER94
     .pipe(
       map(({data}:any)=>{
         return data
@@ -42,7 +42,7 @@ export class TrackService {
   }
 
   getAllRandom$(): Observable<any> {
-    return this.http.get(`${this.URL}/tracks`)
+    return this.http.get(`${this.URL}/api/1.0/tracks`)//ER94
       .pipe(
         mergeMap(({ data }: any) => this.skipById(data, 2)),
         // map((dataRevertida) => { //TODO aplicar un filter comun de array
