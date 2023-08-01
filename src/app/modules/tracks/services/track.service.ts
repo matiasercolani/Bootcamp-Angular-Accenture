@@ -29,6 +29,45 @@ export class TrackService {
     )
   }
 
+    /**
+   * 
+   * @returns Borrar cancion seleccionada!
+   */
+
+    deleteTracks(track:any):Promise<any>{
+      return this.http.delete(`${this.URL}/api/1.0/tracks/delete/${track}`).toPromise()
+      .then((resp) =>{
+        console.log(resp);
+        return true;
+      })
+      .catch((err) =>{
+        console.log(err);
+        return false;
+      });
+     }
+
+    // deleteTracks(track:any):any{
+    //  this.http.delete(`${this.URL}/api/1.0/tracks/delete/${track}`).subscribe(data=>{
+    //     console.log(data);
+    //     // return true;
+    //   }, error => {
+    //     console.log(error);
+    //     // return false;
+    //   }) //ER94
+    // }
+
+    editTracks(track:any, body:any){
+      this.http.put(`${this.URL}/api/1.0/tracks/edit/${track}`, body).subscribe(data=>{
+        console.log(data);
+      }, error => {
+        console.log(error);}) //ER94
+    }
+
+    // deleteTracks$(track:any){
+    //   this.http.get(`${this.URL}/api/1.0/tracks/delete/${track}`)
+    //   console.log(`${this.URL}/api/1.0/tracks/delete/${track}`) //ER94
+    // }
+
   /**
    * 
    * @returns Devolver canciones random
