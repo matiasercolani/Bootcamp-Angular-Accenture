@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TrackModel } from '@core/models/tracks.model';
+import { AdminService } from '@modules/admin/services/admin.service';
 import { TrackService } from '@modules/tracks/services/track.service';
+
+
 
 @Component({
   selector: 'app-action-list',
@@ -8,11 +11,11 @@ import { TrackService } from '@modules/tracks/services/track.service';
   styleUrls: ['./action-list.component.css']
 })
 export class ActionListComponent implements OnInit{
+  //hijo 1
   allTracks:Array<any> = []
   deleteTrack: any;
-  respuesta: any;
-  
-  constructor(private trackService: TrackService){ }
+  respuesta: any;  
+  constructor(private trackService: TrackService, private adminService: AdminService){ }
 
   ngOnInit(): void {
     this.loadDataAll();
@@ -37,9 +40,11 @@ export class ActionListComponent implements OnInit{
     }
   }
 
-  async sendTrackEdit(track:any){
-    console.log(track.uid);
-    await this.trackService.deleteTracks(track.uid);
+  async sendTrackEdit(track:any){ 
+    this.adminService.trackEdit.emit(track);//Se envia el evento al AdminService y de ahi al componente formEdit
+    // console.log(track);
+    // selectTrack(track);
+    // await this.trackService.editTracks(track.uid,body);
     // console.log(this.deleteTrack);
   }
 

@@ -6,7 +6,7 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { SharedModule } from '@shared/shared.module';
 import { FormEditComponent } from './components/form-edit/form-edit.component';
 import { ActionListComponent } from './components/action-list/action-list.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,8 @@ import { ActionListComponent } from './components/action-list/action-list.compon
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

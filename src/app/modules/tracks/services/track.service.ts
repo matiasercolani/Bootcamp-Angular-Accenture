@@ -46,17 +46,13 @@ export class TrackService {
       });
      }
 
-    // deleteTracks(track:any):any{
-    //  this.http.delete(`${this.URL}/api/1.0/tracks/delete/${track}`).subscribe(data=>{
-    //     console.log(data);
-    //     // return true;
-    //   }, error => {
-    //     console.log(error);
-    //     // return false;
-    //   }) //ER94
-    // }
-
+    /**
+   * 
+   * @returns Editar cancion seleccionada!
+   */
     editTracks(track:any, body:any){
+      console.log(track);
+      console.log(body);
       this.http.put(`${this.URL}/api/1.0/tracks/edit/${track}`, body).subscribe(data=>{
         console.log(data);
       }, error => {
