@@ -12,6 +12,7 @@ export class FormEditComponent implements OnInit{
   formTrack: FormGroup = new FormGroup({});
   trackEditForm:any;
   formOrig:any;
+  
 
   constructor(private trackService: TrackService, private adminService: AdminService){}
 
@@ -57,7 +58,8 @@ export class FormEditComponent implements OnInit{
       artist: artista,
       uid: id
     }
-    this.trackService.editTracks(id,this.formOrig);
-  }
 
+    this.trackService.editTracks(id,this.formOrig);
+    this.adminService.changeTrack.emit(this.formOrig);
+  }
 }

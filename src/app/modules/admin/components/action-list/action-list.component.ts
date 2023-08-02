@@ -15,10 +15,31 @@ export class ActionListComponent implements OnInit{
   allTracks:Array<any> = []
   deleteTrack: any;
   respuesta: any;  
+  cualquier:any;
   constructor(private trackService: TrackService, private adminService: AdminService){ }
 
   ngOnInit(): void {
     this.loadDataAll();
+    this.adminService.changeTrack.subscribe(
+      changeEdit=>{
+        console.log("CHANGE EDIT: ",changeEdit);
+        this.allTracks.map(function(dato){
+          if(dato.uid == changeEdit.uid){
+            dato.name = changeEdit.name;
+            dato.album = changeEdit.album;
+            dato.cover = changeEdit.cover;
+            dato.artist = changeEdit.artist;
+            dato.uid = changeEdit.uid;
+          }
+          return dato;
+        })
+        // this.allTracks = this.cualquier;
+        console.log("CHANGE EDIT 2: ",this.allTracks);
+        // this.allTracks = this.allTracks.filter(function( obj ) {
+        //   return obj.uid !== track.uid;
+        // });
+      }
+    )
   }
 
   // async sendTrack(track:any){
@@ -42,10 +63,6 @@ export class ActionListComponent implements OnInit{
 
   async sendTrackEdit(track:any){ 
     this.adminService.trackEdit.emit(track);//Se envia el evento al AdminService y de ahi al componente formEdit
-    // console.log(track);
-    // selectTrack(track);
-    // await this.trackService.editTracks(track.uid,body);
-    // console.log(this.deleteTrack);
   }
 
   async loadDataAll(): Promise<any> {
