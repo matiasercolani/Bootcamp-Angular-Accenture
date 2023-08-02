@@ -43,6 +43,7 @@ export class LoginPageComponent implements OnInit {
         console.log('Session iniciada correcta');
         const{tokenSession, data} = resposeOK;
         this.cookie.set('token', tokenSession, 4, '/');
+        this.cookie.set('role', data.role, 4, '/');
         this.router.navigate(['/','tracks'])
       }if(resposeOK.statusCode == 400){
         this.errorSession = true;
