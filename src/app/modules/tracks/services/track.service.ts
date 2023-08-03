@@ -59,10 +59,14 @@ export class TrackService {
         console.log(error);}) //ER94
     }
 
-    // deleteTracks$(track:any){
-    //   this.http.get(`${this.URL}/api/1.0/tracks/delete/${track}`)
-    //   console.log(`${this.URL}/api/1.0/tracks/delete/${track}`) //ER94
-    // }
+    addTrack(track:any, body:any){
+      console.log(track);
+      console.log(body);
+      this.http.post(`${this.URL}/api/1.0/tracks/add`, body).subscribe(data=>{
+        console.log(data);
+      }, error => {
+        console.log(error);}) //ER94
+    }
 
   /**
    * 

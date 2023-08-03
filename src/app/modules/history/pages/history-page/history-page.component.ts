@@ -10,6 +10,7 @@ import { Observable, of } from 'rxjs';
 })
 export class HistoryPageComponent implements OnInit {
   listResults$: Observable<any> = of([])
+  
   // listResults: TrackModel[] = []
   constructor(private searchService: SearchService) { }
 
@@ -19,11 +20,13 @@ export class HistoryPageComponent implements OnInit {
   receiveData(event: string): void {
     //TODO: agarras el termino y sabes que solo se ejecuta cunado tiene 3 caracters
     console.log('🎁 Estoy en el padre jua jua...', event);
-    this.listResults$ = this.searchService.searchTracks$(event)
+    this.listResults$ = this.searchService.searchTracks$(event);
     // this.searchService.searchTracks$(event)
     //   .subscribe(({data}) =>{
-    //     this.listResults = data;
+    //     this.listResults$ = data;
     //   })
 
   }
+
+  
 }

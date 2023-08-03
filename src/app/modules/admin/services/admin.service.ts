@@ -8,6 +8,8 @@ export class AdminService {
   trackEdit: EventEmitter<any> =  new EventEmitter<any>();
   //pasa dato de form-edit a action-list
   changeTrack: EventEmitter<any> =  new EventEmitter<any>();
+  //pasa dato de form-edit a action-list
+  addTrackDinamic: EventEmitter<any> =  new EventEmitter<any>();
   
   constructor() { }
 

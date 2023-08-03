@@ -33,20 +33,17 @@ export class ActionListComponent implements OnInit{
           }
           return dato;
         })
-        // this.allTracks = this.cualquier;
         console.log("CHANGE EDIT 2: ",this.allTracks);
-        // this.allTracks = this.allTracks.filter(function( obj ) {
-        //   return obj.uid !== track.uid;
-        // });
+      }
+    )
+
+    this.adminService.addTrackDinamic.subscribe(
+      addTrack=>{
+        this.allTracks.push(addTrack);
+        // console.log("ADD: ",this.allTracks);
       }
     )
   }
-
-  // async sendTrack(track:any){
-  //   console.log(track.uid);
-  //   this.deleteTrack = await this.trackService.deleteTracks$(track.uid).toPromise();
-  //   console.log(this.deleteTrack);
-  // }
 
   async sendTrackDelete(track:any){
     this.respuesta = false;

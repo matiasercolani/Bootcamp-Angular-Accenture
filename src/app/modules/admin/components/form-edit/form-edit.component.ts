@@ -12,6 +12,8 @@ export class FormEditComponent implements OnInit{
   formTrack: FormGroup = new FormGroup({});
   trackEditForm:any;
   formOrig:any;
+  option:any;
+
   
 
   constructor(private trackService: TrackService, private adminService: AdminService){}
@@ -47,8 +49,20 @@ export class FormEditComponent implements OnInit{
     )
   }
 
+  onSubmit(buttonType:any): void {
+    if(buttonType==="Editar") {
+        // console.log(buttonType)
+        this.option ="Editar";
+    }
+    if(buttonType==="Agregar"){
+        // console.log(buttonType)
+        this.option ="Agregar";
+    }
+  }
+
   
   sendTrack():void{
+    console.log("sendTrack: ",this.option)
     const {cancion, album, cover, artista, id}= this.formTrack.value // Toma los datos del form
     console.log('cancion: ',cancion,' album: ',album,'cover: ',cover,' artista: ',artista,' id: ',id)
     this.formOrig = {
@@ -58,8 +72,13 @@ export class FormEditComponent implements OnInit{
       artist: artista,
       uid: id
     }
-
-    this.trackService.editTracks(id,this.formOrig);
-    this.adminService.changeTrack.emit(this.formOrig);
+    if(this.option == "Editar"){
+      this.trackService.editTracks(id,this.formOrig);
+      this.adminService.changeTrack.emit(this.formOrig);//envia dato de cambio a adminservice
+    }
+    if(this.option == "Agregar"){
+      this.trackService.addTrack(id,this.formOrig);
+      this.adminService.addTrackDinamic.emit(this.formOrig);
+    }
   }
 }
