@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormEditComponent } from './form-edit.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('FormEditComponent', () => {
   let component: FormEditComponent;
@@ -8,7 +10,11 @@ describe('FormEditComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FormEditComponent]
+      declarations: [FormEditComponent],
+      imports:[
+        HttpClientTestingModule,
+        ReactiveFormsModule
+      ]
     });
     fixture = TestBed.createComponent(FormEditComponent);
     component = fixture.componentInstance;
